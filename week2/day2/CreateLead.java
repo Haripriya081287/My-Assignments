@@ -2,13 +2,19 @@ package week2.day2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class CreateLead {
 
 	public static void main(String[] args) {
 		     //1. Launch http://leaftaps.com/opentaps
-		ChromeDriver driver = new ChromeDriver();
-		driver.get("http://leaftaps.com/opentaps");
+		ChromeOptions option = new ChromeOptions();
+        option.addArguments("--remote-allow-origins=*");
+        option.addArguments("--disable-notifications");
+        ChromeDriver driver = new ChromeDriver(option);
+        driver.get("http://leaftaps.com/opentaps");
+        driver.manage().window().maximize();
+		
 		driver.manage().window().maximize();
 			// 2. Enter username as demoSalesManager (Use : Attribute based)
 		driver.findElement(By.xpath("//input[@id='username']")).sendKeys("DemoCSR");
